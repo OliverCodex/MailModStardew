@@ -1,0 +1,10 @@
+﻿{
+  "Name": "MailModStardew",
+  "Author": "Oliver Clarke",
+  "Version": "1.0.0",
+  "Description": "Menu to write letters to mailboxes on the farm. Stardew Valley",
+  "UniqueID": "OliverClarke.MailModStardew",
+  "EntryDll": "MailModStardew.dll",
+  "MinimumApiVersion": "3.0.0",
+  "UpdateKeys": []
+}
