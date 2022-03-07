@@ -8,29 +8,32 @@ using StardewModdingAPI.Events;
 using StardewModdingAPI.Utilities;
 using StardewValley;
 
-namespace StardewMailMenu
+namespace MailModStardew
 {
     public class ModEntry : Mod
     {
+
+        private ModConfig Config;
+
         public override void Entry(IModHelper helper)
         {
+            this.Config = helper.ReadConfig<ModConfig>();
             helper.Events.GameLoop.GameLaunched += this.OnGameLaunched;
-            helper.Events.Input.ButtonPressed += this.OnButtonPressed;
+            helper.Events.Input.ButtonsChanged += this.OnButtonChanged;
             helper.Events.GameLoop.DayEnding += this.OnDayEnded;
         }
+
         private void OnGameLaunched(object sender, GameLaunchedEventArgs e)
         {
             //Add our custom mail to game mail data on launch.
             Helper.Content.AssetEditors.Add(new CustomMail());
         }
-        private void OnButtonPressed(object sender, ButtonPressedEventArgs e)
-        {
-            //For every specified toggle key proceed with our code.
-            bool isOpenBracketPressed = this.Helper.Input.IsDown(SButton.OemOpenBrackets);
-            if (isOpenBracketPressed)
-            {
-                //Send our mail to player 
-                Game1.addMailForTomorrow("MyMailGodGrant");
+
+        private void OnButtonChanged(object sender, ButtonsChangedEventArgs e)
+        {   //When config button is pressed
+            if (this.Config.OpenMenuHotkey.JustPressed())
+            {     //Add mail
+                  Game1.addMailForTomorrow("MyMailGodGrant");
             }
         }
 
@@ -39,6 +42,5 @@ namespace StardewMailMenu
             //Remove the mail so we can send it again.
             Game1.player.mailReceived.Remove("MyMailGodGrant");
         }
-
     }
 }
