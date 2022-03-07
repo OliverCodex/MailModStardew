@@ -12,6 +12,7 @@ namespace MailModStardew
 {
     public class ModEntry : Mod
     {
+
         private ModConfig Config;
 
         public override void Entry(IModHelper helper)
@@ -21,11 +22,13 @@ namespace MailModStardew
             helper.Events.Input.ButtonsChanged += this.OnButtonChanged;
             helper.Events.GameLoop.DayEnding += this.OnDayEnded;
         }
+
         private void OnGameLaunched(object sender, GameLaunchedEventArgs e)
         {
             //Add our custom mail to game mail data on launch.
             Helper.Content.AssetEditors.Add(new CustomMail());
         }
+
         private void OnButtonChanged(object sender, ButtonsChangedEventArgs e)
         {   //When config button is pressed
             if (this.Config.OpenMenuHotkey.JustPressed())
@@ -39,6 +42,5 @@ namespace MailModStardew
             //Remove the mail so we can send it again.
             Game1.player.mailReceived.Remove("MyMailGodGrant");
         }
-
     }
 }
