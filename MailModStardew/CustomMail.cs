@@ -2,7 +2,7 @@
 using StardewModdingAPI.Events;
 using StardewValley;
 
-namespace StardewMailMenu
+namespace MailModStardew
 {
     public class CustomMail : IAssetEditor
     {
