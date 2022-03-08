@@ -18,8 +18,8 @@ namespace MailModStardew
         {
             //Declaring us a variable for us to use when we want to add mail data.
             var data = asset.AsDictionary<string, string>().Data;
-
-            data["MyMailGodGrant"] = "HEHEHEHAW LEVI %item object 71 1 %%";
+            //  Remember to add space syntax to mail string.
+            data["MyMailGodGrant"] = "I can see your house @^^2016 Valley Lane, right?^^^ -Oliver Clarke %item object 155 1 %%[#]I see you";
         }
     }
 }
